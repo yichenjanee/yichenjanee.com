@@ -683,5 +683,36 @@
 
     ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<BgTweaks />);
   </script>
+<script>
+document.addEventListener('mousemove', function(e) {
+  const star = document.createElement('div');
+  star.style.cssText = `
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    left: ${e.clientX}px;
+    top: ${e.clientY}px;
+    width: 6px;
+    height: 6px;
+    background: transparent;
+    font-size: 12px;
+    transform: translate(-50%, -50%);
+    animation: sparkle 0.8s forwards;
+  `;
+  star.innerHTML = '✦';
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 800);
+});
+
+const style = document.createElement('style');
+style.innerHTML = `
+  @keyframes sparkle {
+    0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%,-50%) scale(0) rotate(180deg); }
+  }
+`;
+document.head.appendChild(style);
+</script>
 </body>
 </html>
+
