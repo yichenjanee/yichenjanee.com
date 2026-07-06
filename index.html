@@ -6,7 +6,7 @@
   <title>Jane H. — Product Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@400;500&family=Nunito:wght@400;500;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -30,12 +30,12 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #FDFCF9; color: #0f0f0f; overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; background: #FFFDF8; color: #0f0f0f; overflow-x: hidden; }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(253,252,249,0.93);
+      background: rgba(255,253,248,0.93);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid transparent;
       transition: border-color 0.4s ease;
@@ -82,22 +82,22 @@
       opacity: 0; transform: translateY(12px);
     }
     .hero-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: 48px; font-weight: 400;
-      line-height: 1.05; letter-spacing: -0.02em; color: #52451B;
-      max-width: 900px; opacity: 0; transform: translateY(20px);
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 40px; font-weight: 300;
+      line-height: 1.18; letter-spacing: -0.01em; color: #95BBEA;
+      max-width: 760px; opacity: 0; transform: translateY(20px);
       cursor: default;
       transition: letter-spacing 0.5s cubic-bezier(0.25,0.46,0.45,0.94), color 0.4s ease;
     }
-    .hero-headline em { font-style: italic; font-weight: 400; transition: color 0.4s ease; }
-    .hero-headline:hover { letter-spacing: 0.01em; }
-    .hero-headline:hover em { color: #490013; }
+    .hero-headline em { font-style: italic; font-weight: 300; transition: color 0.4s ease; }
+    .hero-headline:hover { letter-spacing: 0.02em; }
+    .hero-headline:hover em { color: #81181D; }
     .hero-sub {
       margin-top: 32px; display: flex; align-items: flex-start;
       gap: 80px; opacity: 0; transform: translateY(16px);
     }
     .hero-desc {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Nunito', sans-serif;
       font-size: 20px; font-weight: 400; line-height: 1.5;
       color: #666; max-width: 480px;
     }
@@ -235,7 +235,7 @@
     .hamburger span { display: block; width: 22px; height: 1px; background: #0f0f0f; }
     .mobile-menu {
       display: none; position: fixed; top: 64px; left: 0; right: 0;
-      background: #FDFCF9; border-bottom: 1px solid #e8e8e5; padding: 24px 40px; z-index: 99;
+      background: #FFFDF8; border-bottom: 1px solid #e8e8e5; padding: 24px 40px; z-index: 99;
     }
     .mobile-menu.open { display: block; }
     .mobile-menu a {
@@ -267,18 +267,18 @@
       footer { flex-direction: column; gap: 28px; align-items: flex-start; padding: 48px 24px; }
     }
   </style>
+<link id="gfont-Inter" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
 </head>
 <body>
 
   <!-- NAV -->
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><img src="assets/star-logo.png" alt="">Jane H.</a>
+      <a href="index.html" class="nav-logo" style="font-family: Nunito; font-size: 20px;"><img src="assets/star-logo.png" alt="">jane hsieh</a>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="#" onclick="alert('Resume download would go here.')">Resume</a></li>
       </ul>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -290,7 +290,6 @@
     <a href="index.html" onclick="closeMenu()">Home</a>
     <a href="#work" onclick="closeMenu()">Work</a>
     <a href="about.html" onclick="closeMenu()">About</a>
-    <a href="#" onclick="closeMenu()">Resume</a>
   </div>
 
   <!-- HERO -->
@@ -298,11 +297,11 @@
     <div class="hero" id="hero-section">
       <p class="hero-tag" id="hero-tag" style="color: rgb(170, 170, 170);">Product Designer · New York</p>
       <h1 class="hero-headline" id="hero-headline">
-        I'm Jane, a <em style="color: #60211a;">product/UX designer</em><br>who crafts seamless digital<br>experiences through strategy,<br>empathy, and design.
+        <span style="color:#8EABCD;">I'm jane, a</span> <em style="color: #81181D;">product/UX designer</em> <span style="color:#8EABCD;">who crafts seamless digital experiences through strategy, empathy, and design.</span> <img src="assets/cherry.png?v=2" alt="" style="display:inline-block;width:0.95em;height:auto;vertical-align:-0.12em;margin-left:0.1em;" />
       </h1>
       <img src="assets/flower-vase.png" alt="" style="position:absolute;right:140px;top:140px;width:240px;height:auto;pointer-events:none;opacity:0.95;" />
       <div class="hero-sub" id="hero-sub">
-        <p class="hero-desc">
+        <p class="hero-desc" style="font-family: &quot;Source Sans Pro&quot;; color:#726B65">
           Currently building scalable products driven by deep user research and strategic design thinking. ⋆˙⟡🫧
         </p>
         <div class="hero-stats">
@@ -311,7 +310,7 @@
             <span class="stat-label">Years Experience</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num">8+</span>
+            <span class="stat-num">6+</span>
             <span class="stat-label">Products Shipped</span>
           </div>
           <div class="stat-item">
@@ -357,86 +356,69 @@
       <!-- Card 2 -->
       <a href="case-study-aura.html" class="project-card reveal reveal-d1">
         <div class="card-thumb">
-          <div class="thumb-inner ph-2">
-            <span class="ph-label">Aura Health App</span>
+          <div class="thumb-inner ph-2" style="background:#FAF6E8;">
+            <img src="assets/penny-cover.png?v=2" alt="Penny — budgeting app screens" style="width:100%; height:100%; object-fit:contain; object-position:center; display:block;" />
           </div>
         </div>
         <div class="card-info">
           <div>
-            <p class="card-meta">Design System · UX/UI Design · 2026</p>
-            <h3 class="card-title">Aura Health — Wellness Platform</h3>
-            <p class="card-desc">Patient-facing chronic care management platform.</p>
+            <p class="card-meta">0→1 Product Design · Interaction Design · 2026</p>
+            <h3 class="card-title" style="font-family: &quot;Source Sans Pro&quot;">Meet penny — a budgeting app for gen z</h3>
           </div>
           <span class="card-arrow">↗</span>
         </div>
       </a>
 
       <!-- Card 3 -->
-      <a href="#" class="project-card reveal reveal-d2">
+      <a href="case-study-aquitania.html" class="project-card reveal reveal-d2">
         <div class="card-thumb">
-          <div class="thumb-inner ph-3">
-            <span class="ph-label">Vault Design System</span>
+          <div class="thumb-inner ph-3" style="background:#F3F2EE;">
+            <img src="assets/aquitania-cover-v3.png" alt="Aquitania Design System" style="width:100%;height:100%;object-fit:contain;display:block;">
           </div>
         </div>
         <div class="card-info">
           <div>
-            <p class="card-meta">Product Design · UX/UI Design · 2026</p>
-            <h3 class="card-title">Vault — Component Library</h3>
-            <p class="card-desc">Component library &amp; token architecture for 12 product teams.</p>
+            <p class="card-meta">Design System · UX/UI Design · 2026</p>
+            <h3 class="card-title" style="font-family: &quot;Source Sans Pro&quot;">Building the aquitania design system — translating luxury heritage into a digital experience
+</h3>
           </div>
           <span class="card-arrow">↗</span>
         </div>
       </a>
 
       <!-- Card 4 -->
-      <a href="#" class="project-card reveal reveal-d3">
+      <a href="https://www.figma.com/deck/R9XaGWYh7uUCIqohhJZlF0/Final-Presentation?node-id=1-42&t=CQrDE97S1u8RqFQJ-1" target="_blank" rel="noopener" class="project-card reveal reveal-d3">
         <div class="card-thumb">
-          <div class="thumb-inner ph-4">
-            <span class="ph-label">Folio Marketplace</span>
+          <div class="thumb-inner ph-4" style="background:#BFC0C1;">
+            <img src="assets/toyota-cover.png?v=6" alt="RouteMate — senior mobility onboarding screens for Toyota" style="width:100%; height:100%; object-fit:contain; object-position:center; display:block;" />
           </div>
         </div>
         <div class="card-info">
           <div>
-            <p class="card-meta">E-commerce · UX Strategy · 2022</p>
-            <h3 class="card-title">Folio — Marketplace Experience</h3>
-            <p class="card-desc">Semantic search redesign lifting conversion by 18%.</p>
+            <p class="card-meta">Ethnographic Research · User Research · 2026</p>
+            <h3 class="card-title" style="font-family: &quot;Source Sans Pro&quot;">The emotional side of mobility — designing senior mobility for toyota</h3>
           </div>
           <span class="card-arrow">↗</span>
         </div>
       </a>
 
       <!-- Card 5 -->
-      <a href="#" class="project-card reveal reveal-d4">
-        <div class="card-thumb">
-          <div class="thumb-inner ph-5">
-            <span class="ph-label">Onboard Flow</span>
-          </div>
-        </div>
-        <div class="card-info">
-          <div>
-            <p class="card-meta">EdTech · Onboarding · 2022</p>
-            <h3 class="card-title">Onboard Flow</h3>
-            <p class="card-desc">Zero-to-first-value onboarding reducing drop-off by 31%.</p>
-          </div>
-          <span class="card-arrow">↗</span>
-        </div>
-      </a>
 
     </div>
   </section>
 
   <!-- FOOTER -->
-  <div style="background:#fdfcf9; margin-top:80px; border-top:1px solid #e8e8e5;">
-    <div style="max-width:1280px; margin:0 auto; padding:60px 40px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px;">
-      <div style="display:flex; align-items:center; gap:0; margin-left:-20px;">
+  <div style="background:#FFFDF8; margin-top:24px; border-top:1px solid #e8e8e5;">
+    <div style="max-width:1280px; margin:0 auto; padding:30px 40px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px;">
+      <div style="display:flex; align-items:center; gap:0; margin-left:0;">
         <div>
-          <p style="font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4rem); font-weight:400; line-height:1.05; color:#52451b;">Let's start a</p>
-          <p style="font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4rem); font-weight:400; font-style:italic; line-height:1.05; color:#490013;">conversation.</p>
+          <p style="font-family: &quot;Source Sans Pro&quot;; font-size: 60px; font-weight: 400; line-height: 1.05; color: #81181D">Let's start a</p>
+          <p style="font-family: &quot;Source Sans Pro&quot;; font-size: 60px; font-weight: 400; font-style: italic; line-height: 1.05; color: #81181D">conversation.</p>
         </div>
-        <img src="assets/oval-botanical.png" alt="" style="width:340px;height:auto;flex-shrink:0;pointer-events:none;margin-left:-60px;" />
+        <img src="assets/oval-botanical.png" alt="" style="width:340px;height:auto;flex-shrink:0;pointer-events:none;margin-left:-60px;margin-top:40px;" />
       </div>
       <div style="text-align:right;">
-        <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.95rem; color:#52451b; margin-bottom:14px;">thank you for visiting.</p>
+        <p style="font-family: &quot;Source Sans Pro&quot;; font-style: italic; font-size: 0.95rem; color: #726B65; margin-bottom: 14px">thank you for visiting.</p>
         <div style="display:flex; gap:12px; justify-content:flex-end; margin-bottom:20px;">
           <a href="mailto:yichen.janee@gmail.com" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #ccc;border-radius:50%;color:#666;text-decoration:none;" onmouseover="this.style.borderColor='#0f0f0f';this.style.color='#0f0f0f'" onmouseout="this.style.borderColor='#ccc';this.style.color='#666'">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
@@ -445,8 +427,8 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
         </div>
-        <p style="font-family:'Inter',sans-serif; font-size:0.72rem; color:#999;">Based in New York, NY</p>
-        <p style="font-family:'Inter',sans-serif; font-size:0.7rem; color:#bbb; margin-top:6px;">© 2025 Jane H.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:0.72rem; color:#726B65;">Based in New York, NY</p>
+        <p style="font-family:'Inter',sans-serif; font-size:0.7rem; color:#726B65; margin-top:6px;">© 2025 Jane H.</p>
       </div>
     </div>
   </div>
@@ -488,46 +470,41 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-
-  <!-- ── BACKGROUND MOTION ── -->
-  <canvas id="bg-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
-  <style>
-    body > *:not(#bg-canvas) { position: relative; z-index: 1; }
-  </style>
-
   <script>
-    
-  </script>
-<script>
-document.addEventListener('mousemove', function(e) {
-  const star = document.createElement('div');
-  star.style.cssText = `
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    left: ${e.clientX}px;
-    top: ${e.clientY}px;
-    width: 6px;
-    height: 6px;
-    background: transparent;
-    font-size: 14px;
-    transform: translate(-50%, -50%);
-    animation: sparkle 1.5s forwards;
-  `;
-  star.innerHTML = '✮';
-  document.body.appendChild(star);
-  setTimeout(() => star.remove(), 800);
-});
+    let lastSparkle = 0;
+    document.addEventListener('mousemove', function(e) {
+      const now = Date.now();
+      if (now - lastSparkle < 75) return;
+      lastSparkle = now;
+      const star = document.createElement('div');
+      star.style.cssText = `
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        left: ${e.clientX}px;
+        top: ${e.clientY}px;
+        width: 6px;
+        height: 6px;
+        background: transparent;
+        color: silver;
+        font-size: 16px;
+        transform: translate(-50%, -50%);
+        animation: sparkle 1.8s forwards;
+      `;
+      star.innerHTML = '✮';
+      document.body.appendChild(star);
+      setTimeout(() => star.remove(), 800);
+    });
 
-const style = document.createElement('style');
-style.innerHTML = `
-  @keyframes sparkle {
-    0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-    100% { opacity: 0; transform: translate(-50%,-50%) scale(0) rotate(180deg); }
-  }
-`;
-document.head.appendChild(style);
-</script>
+    const sparkleStyle = document.createElement('style');
+    sparkleStyle.innerHTML = `
+      @keyframes sparkle {
+        0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+        100% { opacity: 0; transform: translate(-50%,-50%) scale(0) rotate(180deg); }
+      }
+    `;
+    document.head.appendChild(sparkleStyle);
+  </script>
+
 </body>
 </html>
-

@@ -8,7 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Inter:wght@300;400&family=Nunito:wght@400;500;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -29,7 +29,7 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'DM Sans', sans-serif;
-      background: #fdfcf9;
+      background: #FFFDF8;
       color: #0f0f0f;
       overflow-x: hidden;
     }
@@ -39,7 +39,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(253,252,249,0.93);
+      background: rgba(255,253,248,0.93);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid transparent;
@@ -94,7 +94,7 @@
     .hamburger span { display: block; width: 22px; height: 1px; background: #0f0f0f; }
     .mobile-menu {
       display: none; position: fixed; top: 64px; left: 0; right: 0;
-      background: #fdfcf9; border-bottom: 1px solid #e8e8e5;
+      background: #FFFDF8; border-bottom: 1px solid #e8e8e5;
       padding: 24px 40px; z-index: 99;
     }
     .mobile-menu.open { display: block; }
@@ -115,16 +115,16 @@
       align-items: start;
     }
     .about-eyebrow {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Source Sans Pro', sans-serif;
       font-style: normal;
       font-size: 2rem;
       font-weight: 400;
-      color: #52451b;
+      color: #8EABCD;
       margin-bottom: 36px;
       opacity: 0;
       transform: translateY(10px);
     }
-    .about-eyebrow .name { color: #490013; font-style: italic; }
+    .about-eyebrow .name { color: #81181D; font-style: italic; }
     .about-bio {
       font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
@@ -138,6 +138,13 @@
     .hero-photo {
       opacity: 0;
       transform: translateY(16px);
+      position: relative;
+    }
+    .hero-photo .bow {
+      position: absolute;
+      top: -44px; right: -38px;
+      width: 78px; height: auto;
+      pointer-events: none; z-index: 3;
     }
     .hero-photo img {
       width: 100%;
@@ -155,10 +162,12 @@
       gap: 80px;
     }
     .timeline-col h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
       font-weight: 400;
-      color: #000;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #aaa;
       margin-bottom: 28px;
     }
     .timeline-list { display: flex; flex-direction: column; gap: 24px; }
@@ -176,15 +185,15 @@
       letter-spacing: 0.02em;
       overflow: hidden;
       background: #f4efe6;
-      color: #52451b;
+      color: #8EABCD;
       border: 1px solid #e8dfcd;
       text-decoration: none;
       object-fit: cover;
     }
     img.t-avatar { padding: 0; background: #fff; border-color: #e8dfcd; }
     .t-avatar.dark { background: #2b2418; color: #f6efe1; border-color: #2b2418; }
-    .t-avatar.cream { background: #fdfcf9; color: #490013; border-color: #e8dfcd; }
-    .t-avatar.wine { background: #490013; color: #f6efe1; border-color: #490013; }
+    .t-avatar.cream { background: #fdfcf9; color: #81181D; border-color: #e8dfcd; }
+    .t-avatar.wine { background: #81181D; color: #f6efe1; border-color: #81181D; }
     .t-role {
       font-family: 'Inter', sans-serif;
       font-size: 0.88rem;
@@ -202,19 +211,19 @@
 
     /* ── LOVES SECTION ── */
     .loves-section {
-      max-width: 1440px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 40px;
       overflow-x: hidden;
     }
     .loves-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Source Sans Pro', sans-serif;
       font-size: 2rem;
       font-weight: 400;
-      color: #52451b;
+      color: #8EABCD;
       margin-bottom: 6px;
     }
-    .loves-title .accent { color: #79301f; font-style: italic; }
+    .loves-title .accent { color: #81181D; font-style: italic; }
     .loves-hint {
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
@@ -225,7 +234,6 @@
     .loves-grid {
       position: relative;
       width: 100%;
-      height: 881px;
     }
     .love-item { position: absolute; cursor: default; }
     .love-item:hover { z-index: 20; }
@@ -242,7 +250,7 @@
 
     /* ── FOOTER ── */
     .footer-wrapper {
-      background: #fdfcf9;
+      background: #FFFDF8;
       margin-top: 80px;
       border-top: 1px solid #e8e8e5;
     }
@@ -267,7 +275,7 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 0.95rem;
-      color: #52451b;
+      color: #8EABCD;
       margin-bottom: 14px;
     }
     .footer-icons {
@@ -311,8 +319,7 @@
       .hero-photo { order: -1; }
       .timeline-section { grid-template-columns: 1fr; padding: 30px 24px 60px; gap: 48px; }
       .loves-section { padding: 20px 24px 0; }
-      .loves-grid { height: 881px; min-height: 0; display: flex; flex-wrap: wrap; gap: 24px; padding-bottom: 40px; }
-      .love-item { position: absolute; cursor: default; }
+      .loves-grid { min-height: 0; }
       .footer-inner { grid-template-columns: 1fr; padding: 60px 24px 30px; }
       .footer-right { text-align: left; }
       .footer-icons { justify-content: flex-start; }
@@ -331,12 +338,11 @@
   <!-- NAV -->
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><img src="assets/star-logo.png" alt="" style="width:36px;height:36px;object-fit:contain;flex-shrink:0;">Jane H.</a>
+      <a href="index.html" class="nav-logo" style="font-family: Nunito; font-size: 20px;"><img src="assets/star-logo.png" alt="" style="width:36px;height:36px;object-fit:contain;flex-shrink:0;">jane hsieh</a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#work">Work</a></li>
         <li><a href="about.html" class="active">About</a></li>
-        <li><a href="#" onclick="alert('Resume download would go here.')">Resume</a></li>
       </ul>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -348,14 +354,13 @@
     <a href="index.html" onclick="closeMenu()">Home</a>
     <a href="index.html#work" onclick="closeMenu()">Work</a>
     <a href="about.html" onclick="closeMenu()">About</a>
-    <a href="#" onclick="closeMenu()">Resume</a>
   </div>
 
   <!-- ── HERO BIO ── -->
   <div class="hero-grid">
     <div>
       <p class="about-eyebrow" id="about-eyebrow">
-        Little about <span class="name">Jane</span> ۶ৎ⊹₊⟡⋆
+        Little about <span class="name">jane</span> ۶ৎ⊹₊⟡⋆
       </p>
       <div class="about-bio" id="about-bio">
         <p>I didn't start out in design. For four years, my world was built on data points and supply chains. As an analyst, I learned how to untangle messy problems, balance the needs of different stakeholders, and let data lead the way. But as much as I valued the logic of it all, I felt a growing pull toward something more personal — I wanted to use that analytical mindset to build things that actually foster human connection.</p>
@@ -364,22 +369,27 @@
       </div>
     </div>
     <div class="hero-photo" id="hero-photo">
-      <img src="assets/jane-photo.jpg" alt="Jane H." />
+      <img src="assets/jane-portrait.png" alt="Jane Hsieh in Lisbon" />
+      <img class="bow" src="assets/blue-bow.png" alt="" />
     </div>
   </div>
 
   <!-- ── TIMELINE ── -->
   <div class="timeline-section reveal">
     <div class="timeline-col">
-      <h2>Work Experience</h2>
+      <h2>Work experience</h2>
       <div class="timeline-list">
         <div class="timeline-item">
           <img class="t-avatar" src="assets/logo-pratt-dx.png" alt="Pratt Institute" />
-          <div><div class="t-role">Product Design Consultant — Pratt Institute</div><div class="t-meta">Sept 2025 - Present &nbsp;|&nbsp; New York, NY</div></div>
+          <div><div class="t-role">UX/UI Designer — Pratt Institute</div><div class="t-meta">Sept 2025 - Present &nbsp;|&nbsp; New York, NY</div></div>
         </div>
         <div class="timeline-item">
           <img class="t-avatar" src="assets/logo-estee-lauder.png" alt="The Estée Lauder Companies" />
           <div><div class="t-role">Strategic Planning Analyst — The Estée Lauder Companies</div><div class="t-meta">Nov 2022 - Sept 2025 &nbsp;|&nbsp; New York, NY</div></div>
+        </div>
+        <div class="timeline-item">
+          <img class="t-avatar" src="assets/logo-lvmh.jpeg" alt="LVMH" />
+          <div><div class="t-role">Project Manager — LVMH</div><div class="t-meta">June - Aug 2022 &nbsp;|&nbsp; New York, NY</div></div>
         </div>
         <div class="timeline-item">
           <img class="t-avatar" src="assets/logo-tesla.png" alt="Tesla" />
@@ -387,7 +397,7 @@
         </div>
         <div class="timeline-item">
           <img class="t-avatar" src="assets/logo-flexport.png" alt="Flexport" />
-          <div><div class="t-role">Client Success Specialist — Flexport</div><div class="t-meta">Jan - Oct 2021 &nbsp;|&nbsp; New York, NY</div></div>
+          <div><div class="t-role">Business Operations Specialist — Flexport</div><div class="t-meta">Jan - Oct 2021 &nbsp;|&nbsp; New York, NY</div></div>
         </div>
         <div class="timeline-item">
           <img class="t-avatar" src="assets/logo-daily-collegian.png" alt="The Daily Collegian" />
@@ -409,7 +419,7 @@
         </div>
         <div class="timeline-item">
           <img class="t-avatar" src="assets/logo-penn-state.png" alt="Penn State" />
-          <div><div class="t-role">BS in Supply Chain & Information Systems — Penn State</div><div class="t-meta">2016 - 2020 &nbsp;|&nbsp; State College, PA</div></div>
+          <div><div class="t-role">BS in Business & Information Systems — Penn State</div><div class="t-meta">2016 - 2020 &nbsp;|&nbsp; State College, PA</div></div>
         </div>
       </div>
     </div>
@@ -417,66 +427,27 @@
 
   <!-- ── LOVES SECTION ── -->
   <div class="loves-section reveal reveal-d1">
-    <h2 class="loves-title" style="padding-left:80px">Beyond design, I <span class="accent">love</span> to ...</h2>
+    <h2 class="loves-title" style="padding-left:0">Beyond design, I <span class="accent">love</span> ...</h2>
     <p class="loves-hint" style="padding-left:80px">
 </p>
 
     <div class="loves-grid" id="loves-grid">
-      <div class="love-item" style="left:177px;top:99px;transform:rotate(13.17deg)">
-        <img class="love-img" width="148" height="161" src="assets/traveling-the-world.png" alt="traveling the world" />
-      </div>
-      <div class="love-item" style="left:428px;top:125px;transform:rotate(-11.59deg)">
-        <img class="love-img" width="235" height="186" src="assets/decorating-my-home.png" alt="decorating my home" />
-      </div>
-      <div class="love-item" style="left:734px;top:243px;transform:rotate(0deg)">
-        <img class="love-img" width="163" height="170" src="assets/cooking-healthy-meals.png" alt="cooking healthy meals" />
-      </div>
-      <div class="love-item" style="left:1081px;top:525px;transform:rotate(12.14deg)">
-        <img class="love-img" width="180" height="214" src="assets/making-hot-latte.png" alt="making hot latte" />
-      </div>
-      <div class="love-item" style="left:513px;top:447px;transform:rotate(13.66deg)">
-        <img class="love-img" width="199" height="192" src="assets/working-out.png" alt="working out" />
-      </div>
-      <div class="love-item" style="left:780px;top:550px;transform:rotate(-8.01deg)">
-        <img class="love-img" width="223" height="183" src="assets/reading-books.png" alt="reading books" />
-      </div>
-      <div class="love-item" style="left:1003px;top:290px;transform:rotate(0deg)">
-        <img class="love-img" width="208" height="180" src="assets/ taking-photos.png" alt="taking photos" />
-      </div>
-      <div class="love-item" style="left:176px;top:517px;transform:rotate(-7.47deg)">
-        <img class="love-img" width="244" height="244" src="assets/arranging-flowers.png" alt="arranging flowers" />
-      </div>
-      <div class="love-item" style="left:1025px;top:114px;transform:rotate(0deg)">
-        <img class="love-img" width="163" height="156" src="assets/baking-cheesecakes.png" alt="baking cheesecakes" />
-      </div>
-      <div class="love-item" style="left:244px;top:378px;transform:rotate(-17.7deg)">
-        <img class="love-img" width="193" height="164" src="assets/exploring-personal-growth.png" alt="exploring personal growth" />
-      </div>
-      <p class="love-label" style="position:absolute;left:104px;top:262px">traveling the world</p>
-      <p class="love-label" style="position:absolute;left:568px;top:310px">decorating my home</p>
-      <p class="love-label" style="position:absolute;left:837px;top:227px">cooking healthy meals</p>
-      <p class="love-label" style="position:absolute;left:1151px;top:243px">making hot latte</p>
-      <p class="love-label" style="position:absolute;left:375px;top:520px">working out</p>
-      <p class="love-label" style="position:absolute;left:537px;top:660px">reading books</p>
-      <p class="love-label" style="position:absolute;left:977px;top:431px">taking photos</p>
-      <p class="love-label" style="position:absolute;left:326px;top:710px">arranging flowers</p>
-      <p class="love-label" style="position:absolute;left:935px;top:730px">baking cheesecakes</p>
-      <p class="love-label" style="position:absolute;left:1195px;top:694px">exploring personal growth</p>
+      <img src="assets/loves-collage.png?v=8" alt="Beyond design — traveling the world, decorating my home, cooking healthy meals, making latte art, working out, reading books, taking photos, arranging flowers, baking cheesecakes, dressing up" style="display:block; width:100%; max-width:1440px; height:auto; margin:0 auto;" />
     </div>
   </div>
 
   <!-- FOOTER -->
-  <div style="background:#fdfcf9; margin-top:80px; border-top:1px solid #e8e8e5;">
-    <div style="max-width:1280px; margin:0 auto; padding:60px 40px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px;">
-      <div style="display:flex; align-items:center; gap:0; margin-left:-20px;">
+  <div style="background:#FFFDF8; margin-top:24px; border-top:1px solid #e8e8e5;">
+    <div style="max-width:1280px; margin:0 auto; padding:30px 40px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px;">
+      <div style="display:flex; align-items:center; gap:0; margin-left:0;">
         <div>
-          <p style="font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4rem); font-weight:400; line-height:1.05; color:#52451b;">Let's start a</p>
-          <p style="font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4rem); font-weight:400; font-style:italic; line-height:1.05; color:#490013;">conversation.</p>
+          <p style="font-family: &#39;Source Sans Pro&#39;,sans-serif; font-size: 60px; font-weight: 400; line-height: 1.05; color: #81181D">Let's start a</p>
+          <p style="font-family: &#39;Source Sans Pro&#39;,sans-serif; font-size: 60px; font-weight: 400; font-style: italic; line-height: 1.05; color: #81181D">conversation.</p>
         </div>
-        <img src="assets/oval-botanical.png" alt="" style="width:340px;height:auto;flex-shrink:0;pointer-events:none;margin-left:-60px;" />
+        <img src="assets/oval-botanical.png" alt="" style="width:340px;height:auto;flex-shrink:0;pointer-events:none;margin-left:-60px;margin-top:40px;" />
       </div>
       <div style="text-align:right;">
-        <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:0.95rem; color:#52451b; margin-bottom:14px;">thank you for visiting.</p>
+        <p style="font-family:'Source Sans Pro',sans-serif; font-style:italic; font-size:0.95rem; color:#726B65; margin-bottom:14px;">thank you for visiting.</p>
         <div style="display:flex; gap:12px; justify-content:flex-end; margin-bottom:20px;">
           <a href="mailto:yichen.janee@gmail.com" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #ccc;border-radius:50%;color:#666;text-decoration:none;" onmouseover="this.style.borderColor='#0f0f0f';this.style.color='#0f0f0f'" onmouseout="this.style.borderColor='#ccc';this.style.color='#666'">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
@@ -485,8 +456,8 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
         </div>
-        <p style="font-family:'Inter',sans-serif; font-size:0.72rem; color:#999;">Based in New York, NY</p>
-        <p style="font-family:'Inter',sans-serif; font-size:0.7rem; color:#bbb; margin-top:6px;">© 2025 Jane H.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:0.72rem; color:#726B65;">Based in New York, NY</p>
+        <p style="font-family:'Inter',sans-serif; font-size:0.7rem; color:#726B65; margin-top:6px;">© 2025 Jane H.</p>
       </div>
     </div>
   </div>
@@ -499,10 +470,12 @@
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
     function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 
-    window.addEventListener('load', () => {
+    function runHeroIntro() {
       const eyebrow = document.getElementById('about-eyebrow');
       const bio = document.getElementById('about-bio');
       const photo = document.getElementById('hero-photo');
+      if (!eyebrow || eyebrow.dataset.revealed) return;
+      eyebrow.dataset.revealed = '1';
       const animate = (el, delay) => setTimeout(() => {
         el.style.transition = 'opacity 1s ease, transform 1s ease';
         el.style.opacity = '1';
@@ -511,13 +484,58 @@
       animate(eyebrow, 150);
       animate(bio, 380);
       animate(photo, 300);
-    });
+    }
+    if (document.readyState === 'complete') {
+      runHeroIntro();
+    } else {
+      window.addEventListener('load', runHeroIntro);
+      document.addEventListener('DOMContentLoaded', runHeroIntro);
+    }
+    // Safety fallback — never leave hero content hidden
+    setTimeout(runHeroIntro, 1200);
 
     const reveals = document.querySelectorAll('.reveal');
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.08 });
     reveals.forEach(el => obs.observe(el));
+    // Safety fallback — guarantee everything shows even if the observer never fires
+    setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 1500);
+  </script>
+  <script>
+    let lastSparkle = 0;
+    document.addEventListener('mousemove', function(e) {
+      const now = Date.now();
+      if (now - lastSparkle < 75) return;
+      lastSparkle = now;
+      const star = document.createElement('div');
+      star.style.cssText = `
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        left: ${e.clientX}px;
+        top: ${e.clientY}px;
+        width: 6px;
+        height: 6px;
+        background: transparent;
+        color: silver;
+        font-size: 16px;
+        transform: translate(-50%, -50%);
+        animation: sparkle 1.8s forwards;
+      `;
+      star.innerHTML = '✮';
+      document.body.appendChild(star);
+      setTimeout(() => star.remove(), 800);
+    });
+
+    const sparkleStyle = document.createElement('style');
+    sparkleStyle.innerHTML = `
+      @keyframes sparkle {
+        0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+        100% { opacity: 0; transform: translate(-50%,-50%) scale(0) rotate(180deg); }
+      }
+    `;
+    document.head.appendChild(sparkleStyle);
   </script>
 </body>
 </html>
