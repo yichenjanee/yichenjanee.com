@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <template id="__bundler_thumbnail" data-bg-color="#0c4524">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#0c4524"/>
+      <circle cx="600" cy="360" r="150" fill="none" stroke="#ffffff" stroke-width="10"/>
+      <text x="600" y="405" font-family="Georgia, serif" font-size="150" fill="#ffffff" text-anchor="middle">p</text>
+      <text x="600" y="560" font-family="Georgia, serif" font-size="60" font-style="italic" fill="#ffffff" text-anchor="middle">penny</text>
+    </svg>
+  </template>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>penny — Case Study · Jane H.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@400;500&family=Nunito:wght@400;500;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #0f0f0f; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.4s ease;
+    }
+    #navbar.scrolled { border-color: #ececec; }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 40px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 20px; font-weight: 400; letter-spacing: 0.02em;
+      color: #0f0f0f; text-decoration: none; white-space: nowrap;
+    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #8a8a8a; text-decoration: none;
+      transition: color 0.25s ease; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: #0f0f0f; transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: #0f0f0f; }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+    .container-wide { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── AGENDA SIDEBAR ── */
+    .cs-layout {
+      max-width: 1280px; margin: 40px auto 0; padding: 0 40px;
+      display: grid; grid-template-columns: 220px 1fr; gap: 72px; align-items: start;
+    }
+    .cs-agenda { position: sticky; top: 100px; align-self: start; }
+    .agenda-back {
+      display: inline-block; font-size: 0.95rem; color: #0c4524;
+      text-decoration: none; margin-bottom: 36px; transition: opacity 0.25s ease;
+    }
+    .agenda-back:hover { opacity: 0.55; }
+    .agenda-list { display: flex; flex-direction: column; gap: 15px; }
+    .agenda-list a {
+      font-size: 0.95rem; color: #a9c3b5; text-decoration: none;
+      line-height: 1.3; transition: color 0.25s ease;
+    }
+    .agenda-list a:hover { color: #0c4524; }
+    .agenda-list a.active { color: #0f0f0f; }
+    .cs-section { scroll-margin-top: 100px; }
+
+    /* ── HERO ── */
+    .cs-hero {
+      max-width: 1280px; margin: 0 auto; padding: 130px 40px 60px;
+    }
+    .cs-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: #8a8a8a; text-decoration: none; margin-bottom: 64px;
+      transition: color 0.25s ease, gap 0.25s ease;
+    }
+    .cs-back:hover { color: #0f0f0f; gap: 12px; }
+    .cs-hero-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: end;
+    }
+    .cs-tag {
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #aaa; margin-bottom: 24px;
+    }
+    .cs-title {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 40px; font-weight: 600;
+      line-height: 1.15; letter-spacing: -0.02em; color: #0f0f0f;
+      margin-bottom: 28px;
+    }
+    .cs-title em { font-style: italic; color: #0c4524; }
+    .cs-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem; font-weight: 300; color: #555; line-height: 1.8;
+    }
+
+    /* ── COVER ── */
+    .cs-cover {
+      width: 100%; aspect-ratio: 16/8; margin: 64px 0 0;
+      background: #FAF6E8;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .cs-cover-label {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.28);
+    }
+    .cs-cover img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+    /* ── FIGURES ── */
+    .cs-figure { margin-top: 44px; }
+    .cs-figure + .cs-body { margin-top: 32px; }
+    .cs-figure img { width: 100%; display: block; border: 1px solid #ececec; border-radius: 2px; background: #f6f4ef; }
+    .cs-figure.plain img { border: none; background: transparent; }
+    .cs-caption { font-size: 0.72rem; font-weight: 300; color: #999; margin-top: 14px; line-height: 1.6; }
+    .ph-fig {
+      width: 100%; aspect-ratio: 16/8; background: #f6f4ef;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid #ececec; border-radius: 2px;
+    }
+    .ph-fig.tall { aspect-ratio: 16/10; }
+    .ph-fig.short { aspect-ratio: 16/6; }
+    .ph-fig-label { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(0,0,0,0.26); text-align: center; padding: 0 16px; }
+
+    /* ── SECTION ── */
+    .cs-section { padding: 80px 0; }
+    .cs-section + .cs-section { border-top: 1px solid #f0f0f0; }
+
+    .section-head { margin-bottom: 28px; }
+    .section-eyebrow {
+      font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #aaa; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 32px; font-weight: 600; color: #0f0f0f; line-height: 1.18;
+    }
+    .section-title em { font-style: italic; color: #0c4524; }
+    .section-body-inner { max-width: none; }
+
+    .cs-body {
+      font-size: 0.98rem; font-weight: 300; line-height: 1.9; color: #444; text-wrap: pretty; max-width: none;
+    }
+    .cs-body + .cs-body { margin-top: 1.3em; }
+    .cs-body strong { font-weight: 500; color: #0f0f0f; }
+
+    /* ── CALLOUT / SUBHEAD / QUOTE ── */
+    .cs-callout {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 1.9rem; line-height: 1.45; color: #0c4524;
+      max-width: 900px; margin: 0 0 8px;
+    }
+    .cs-subhead {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 400;
+      color: #0f0f0f; margin: 52px 0 0;
+    }
+    .cs-quote {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 2.4rem; line-height: 1.4; color: #0f0f0f;
+      max-width: 900px; margin: 0 0 28px; letter-spacing: -0.01em;
+    }
+    .cs-quote-author {
+      display: block; font-family: 'Inter', sans-serif; font-style: normal;
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #8a8a8a; margin-top: 18px;
+    }
+
+    /* ── OVERVIEW / META GRID ── */
+    .overview-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      margin-top: 8px; background: #ececec; border: 1px solid #ececec;
+    }
+    .overview-card { padding: 28px 24px; background: #fff; }
+    .oc-label {
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #aaa; margin-bottom: 10px;
+    }
+    .oc-value {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px; font-weight: 400; color: #0f0f0f; line-height: 1.45;
+    }
+
+    /* ── INSIGHTS ── */
+    .insight-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; margin-top: 8px; background: #ececec; border: 1px solid #ececec; }
+    .insight-grid.two { grid-template-columns: 1fr 1fr; }
+    .insight-card { padding: 32px 28px; background: #fff; }
+    .insight-num {
+      font-family: 'Playfair Display', serif; font-size: 1.6rem;
+      font-weight: 400; font-style: italic; color: #bcd2c6; margin-bottom: 14px;
+    }
+    .insight-quote {
+      font-family: 'Inter', sans-serif; font-style: italic;
+      font-size: 14px; color: #0c4524; line-height: 1.5; margin-bottom: 0;
+    }
+    .insight-label {
+      font-family: 'Source Sans Pro', sans-serif; font-weight: 600;
+      font-size: 1rem; color: #0f0f0f; line-height: 1.35; margin-bottom: 14px;
+      min-height: 2.7em;
+    }
+    .insight-text { font-size: 0.9rem; font-weight: 300; line-height: 1.75; color: #444; }
+    .insight-text strong { font-weight: 500; color: #0f0f0f; }
+
+    /* ── FEATURE BLOCKS ── */
+    .feature-block { margin-top: 44px; }
+    .feature-block .cs-subhead { margin-top: 0; }
+
+    /* ── CS NAV FOOTER ── */
+    .cs-nav-footer {
+      max-width: 1280px; margin: 0 auto; padding: 48px 40px;
+      border-top: 1px solid #f0f0f0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cs-nav-link {
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: #8a8a8a; text-decoration: none; transition: color 0.25s ease;
+    }
+    .cs-nav-link:hover { color: #0f0f0f; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── HAMBURGER ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: #0f0f0f; }
+
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .cs-hero { padding: 100px 24px 40px; }
+      .cs-hero-grid { grid-template-columns: 1fr; gap: 32px; align-items: start; }
+      .container, .container-wide { padding: 0 24px; }
+      .cs-layout { grid-template-columns: 1fr; gap: 0; padding: 0 24px; }
+      .cs-agenda { display: none; }
+      .overview-grid { grid-template-columns: 1fr 1fr; }
+      .insight-grid, .insight-grid.two { grid-template-columns: 1fr; }
+      .cs-callout { font-size: 1.25rem; }
+      .cs-quote { font-size: 1.5rem; }
+    }
+  </style>
+<link id="gfont-Inter" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="assets/star-logo.png" alt="" style="width:36px;height:36px;object-fit:contain;flex-shrink:0;">jane hsieh</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-grid">
+      <div>
+        <p class="cs-tag">PRODUCT DESIGN · UX/UI DESIGN · 2026</p>
+        <h1 class="cs-title">Meet penny: A budgeting app designed for Gen Z that turns financial tracking from a stressful chore into a meaningful lifestyle choice</h1>
+      </div>
+      <p class="cs-tagline">A budgeting experience that helps young adults build awareness and reflection around their spending — making saving feel rewarding, not restrictive.</p>
+    </div>
+  </div>
+
+  <div class="container-wide">
+    <div class="cs-cover reveal">
+      <img src="assets/penny-cover.png?v=2" alt="penny — a budgeting app for Gen Z" />
+    </div>
+  </div>
+
+  <div class="cs-layout">
+    <aside class="cs-agenda">
+      <a href="index.html#work" class="agenda-back">← back to work</a>
+      <nav class="agenda-list">
+        <a href="#why">why penny</a>
+        <a href="#define">define our problem</a>
+        <a href="#problem">problem statement</a>
+        <a href="#ideation">ideation</a>
+        <a href="#solution">the solution</a>
+        <a href="#testing">user testing</a>
+        <a href="#next">next steps</a>
+        <a href="#reflection">reflection</a>
+      </nav>
+    </aside>
+    <div class="cs-content">
+
+    <!-- META -->
+    <div class="cs-section reveal" style="padding-bottom:40px;">
+      <div class="overview-grid">
+        <div class="overview-card">
+          <p class="oc-label">Duration</p>
+          <p class="oc-value">February – May 2026 (4 months)</p>
+        </div>
+        <div class="overview-card">
+          <p class="oc-label">Team</p>
+          <p class="oc-value">3 Product Designers</p>
+        </div>
+        <div class="overview-card">
+          <p class="oc-label">My Role</p>
+          <p class="oc-value">User Research, Product Design, UX/UI Design, Design System</p>
+        </div>
+        <div class="overview-card">
+          <p class="oc-label">Tools Used</p>
+          <p class="oc-value">Figma, FigJam, Claude AI</p>
+        </div>
+      </div>
+      <p class="cs-body" style="margin-top:20px; font-size:0.82rem; color:#888;">
+</p>
+    </div>
+
+    <!-- WHY -->
+    <div class="cs-section reveal" id="why">
+      <div class="section-head">
+        <p class="section-eyebrow">Why this project?</p>
+        <h2 class="section-title">Why <em>another</em> budgeting app?</h2>
+      </div>
+      <div class="section-body-inner">
+        <p class="cs-body">As a Gen Z living in a high cost-of-living city, I find it hard to be mindful with spending when the city makes temptation so accessible. A cup of coffee, a salad bowl, or a small dessert might seem like minor expenses, but they accumulate quickly — making it <strong>easy to drift off track of budgeting</strong>.</p>
+        <div class="cs-figure plain"><img src="assets/penny/p2_0.png" alt="A Gen Z professional surrounded by everyday spending temptations in the city" /></div>
+        <p class="cs-body">While there are countless budgeting apps on the market, <strong>few actually drive behavioral change</strong>. This realization made me see that young adults face a similar challenge, rooted in our highly digital and convenient lifestyles. Based on our industry research, we found that: Based on the industry research, we found that: </p>
+        <div class="cs-figure plain"><img src="assets/penny/p3_0.png" alt="75% stopped using finance apps within 3 months, 73% live paycheck to paycheck, 27% admit to doom spending" /></div>
+        <p class="cs-body">We wanted to build something <strong>different</strong> — not just another regular budgeting tool, but a true shift in approach that could really help users.</p>
+      </div>
+    </div>
+
+    <!-- DEFINE -->
+    <div class="cs-section reveal" id="define">
+      <div class="section-head">
+        <p class="section-eyebrow">Define our problem</p>
+        <h2 class="section-title">Listening to real people share their <em>struggles</em> with budgeting</h2>
+      </div>
+      <div class="section-body-inner">
+        <p class="cs-body">We conducted interviews with 6 participants aged 18–30, all based in NYC. The conversations revealed three key insights into how young adults relate to money:</p>
+        <div class="insight-grid" style="margin-top:40px;">
+          <div class="insight-card">
+            <p class="insight-num">01</p>
+            <p class="insight-label">Lack of Awareness on Spending</p>
+            <p class="insight-quote" style="font-family: Inter; font-size: 14px">"I don't really know how much I spend every day, especially on small things like coffee or food."</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-num">02</p>
+            <p class="insight-label">Impulse &amp; Emotional Spending</p>
+            <p class="insight-quote">"I usually realize it wasn't necessary after I've already bought it."</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-num">03</p>
+            <p class="insight-label">Weak Connection to Goals</p>
+            <p class="insight-quote">"I want to save money but I almost can't keep it."</p>
+          </div>
+        </div>
+
+        <p class="cs-body" style="margin-top:44px;">Driven by these insights, we identified our <strong>core user challenge</strong> and <strong>mapped the current user journey</strong> to pinpoint exactly where the experience was failing them.</p>
+        <div class="cs-figure">
+          <img src="assets/penny/p8_0.png" alt="Current user journey — &quot;My balance dropped, but how?&quot;" />
+        </div>
+      </div>
+    </div>
+
+    <!-- PROBLEM STATEMENT -->
+    <div class="cs-section reveal" id="problem">
+      <div class="section-head">
+        <p class="section-eyebrow">Problem Statement</p>
+        <h2 class="section-title">Framing the <em>core challenge</em></h2>
+      </div>
+      <div class="section-body-inner">
+        <p class="cs-callout" style="font-family:'Inter',sans-serif; font-size:20px;">How might we assist young adults who struggle with impulsive purchases to build greater awareness and reflection around their spending behaviors?</p>
+      </div>
+    </div>
+
+    <!-- IDEATION -->
+    <div class="cs-section reveal" id="ideation">
+      <div class="section-head">
+        <p class="section-eyebrow">Ideation</p>
+        <h2 class="section-title">Framing the <em>opportunity</em> to create a budgeting experience that actually works</h2>
+      </div>
+      <div class="section-body-inner">
+        <p class="cs-body">So… how exactly do we design a different kind of budgeting app that turns our users' pain points into opportunities?</p>
+        <p class="cs-body">Through competitive research, we discovered that while streaks, milestones, and emotional design successfully help users build consistent habits, <strong>no existing financial app combined these behavioral mechanics into a money tracker</strong>. To explore this solution space, we used mind-mapping and SCAMPER during our brainstorming sessions to define our core focus.</p>
+        <div class="cs-figure">
+          <img src="assets/penny/p7_0.png" alt="Mind mapping and SCAMPER brainstorming" />
+        </div>
+
+        <p class="cs-subhead" style="font-family:'Inter',sans-serif;">Based on our analysis, we aligned on 3 major concepts and mapped a new journey map:</p>
+        <div class="insight-grid" style="margin-top:24px;">
+          <div class="insight-card">
+            <p class="insight-num">01</p>
+            <p class="insight-label">Know my priority</p>
+            <p class="insight-text">Users often overspend because they lose sight of what they truly value, making it easy to waste money on impulse purchases.</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-num">02</p>
+            <p class="insight-label">Be consistent</p>
+            <p class="insight-text">Strict, set budget limits feel too restrictive and rarely last. We needed a fun, engaging way to help users build financial habits that fit their lifestyle.</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-num">03</p>
+            <p class="insight-label">Achieve my goal</p>
+            <p class="insight-text">Showing users what they've achieved keeps them coming back. When people see their real progress, it motivates them to keep going.</p>
+          </div>
+        </div>
+
+        <div class="cs-figure plain"><img src="assets/penny/p8_1.png" alt="Purposed journey — Know my priorities, Be consistent, Achieve my goals" /></div>
+
+        <p class="cs-subhead" style="font-family:'Inter',sans-serif; margin-top:36px;">With our core concepts established, we started visualizing</p>
+        <p class="cs-body" style="margin-top:36px;">We sketched ideas that translate these three concepts into functional features, then brought them to life in a mid-fidelity prototype.</p>
+        <div class="cs-figure">
+          <img src="assets/penny/p9_0.png" alt="Concept sketches translating ideas into features" />
+        </div>
+        <p class="cs-subhead" style="font-family:'Inter',sans-serif; margin-top:36px;">Turning them into mid-fidelity prototype</p>
+
+        <p class="cs-subhead" style="font-family:'Inter',sans-serif; font-size:20px;">Forming our brand identity &amp; design system</p>
+        <p class="cs-body" style="margin-top:20px;">Before diving into the high-fidelity designs, I crafted a style guide and design system to establish a consistent visual language across penny.</p>
+        <div class="cs-figure">
+          <img src="assets/penny/p9_1.png" alt="penny brand identity and design system — typography, color, components" />
+        </div>
+      </div>
+    </div>
+
+    <!-- SOLUTION -->
+    <div class="cs-section reveal" id="solution">
+      <div class="section-head">
+        <p class="section-eyebrow">The solution</p>
+        <h2 class="section-title">Introducing <em>penny</em>: a different budgeting app that bridges the gap</h2>
+      </div>
+      <div class="section-body-inner">
+        <p class="cs-body">Join a budgeting journey designed to help you prioritize your spending — built around three behavioral pillars that make saving feel rewarding.</p>
+
+        <div class="feature-block">
+          <p class="cs-subhead">A penny saved is a penny earned</p>
+          <p class="cs-body" style="margin-top:16px;">With daily challenges, skipping a single cup of coffee can transform into a ticket for your next vacation.</p>
+          <div class="cs-figure">
+            <img src="assets/penny/p4_1.png" alt="Daily challenge screens" />
+          </div>
+        </div>
+
+        <div class="feature-block">
+          <p class="cs-subhead">A flexible way to save without feeling restricted</p>
+          <p class="cs-body" style="margin-top:16px;">Set up financial milestones that fit your lifestyle, instead of rigid limits that don't last.</p>
+          <div class="cs-figure">
+            <img src="assets/penny/p4_0.png" alt="Onboarding — ranking your spending priorities" />
+          </div>
+        </div>
+
+        <div class="feature-block">
+          <p class="cs-subhead">See what you've achieved</p>
+          <p class="cs-body" style="margin-top:16px;">Celebrate your growth with visual milestones that make progress tangible and motivating.</p>
+          <div class="cs-figure">
+            <img src="assets/penny/p5_0.png" alt="Spending insights and achievement screens" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTING -->
+    <div class="cs-section reveal" id="testing">
+      <div class="section-head">
+        <p class="section-eyebrow">User Testing Insights</p>
+        <h2 class="section-title">Listening to <em>feedback</em> to refine the experience</h2>
+      </div>
+      <div class="section-body-inner">
+        <p class="cs-body">Once the high-fidelity screens were ready, we interviewed 18 users for feedback. Their insights were incredibly valuable — highlighting usability issues and revealing how we could better encourage consistent app engagement.</p>
+        <div class="insight-grid" style="margin-top:40px;">
+          <div class="insight-card">
+            <p class="insight-num">01</p>
+            <p class="insight-label">Daily Challenge screen</p>
+            <p class="insight-text">Clarify the meaning of the Split, Merge, and Trade features.</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-num">02</p>
+            <p class="insight-label">Achievement screen</p>
+            <p class="insight-text">Redesign the badge visuals and clearly define the meaning behind the progress metrics.</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-num">03</p>
+            <p class="insight-label">Spending Alignment screen</p>
+            <p class="insight-text">Better define the section and provide clearer supporting information.</p>
+          </div>
+        </div>
+        <div class="cs-figure plain"><img src="assets/penny/p10_0.png" alt="User testing insight — clarifying the Split, Merge, and Trade features" /></div>
+        <div class="cs-figure plain"><img src="assets/penny/p10_1.png" alt="User testing insight — redesigning the badge visuals and defining the metrics" /></div>
+        <div class="cs-figure plain"><img src="assets/penny/p11_0.png" alt="User testing insight — Spending Alignment section" /></div>
+        <p class="cs-body" style="margin-top:32px;">With this valuable feedback, we are planning to turn these findings into direct design iterations and improvements.</p>
+      </div>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="cs-section reveal" id="next">
+      <div class="section-head">
+        <p class="section-eyebrow">Next Steps</p>
+        <h2 class="section-title">Where penny goes <em>from here</em></h2>
+      </div>
+      <div class="section-body-inner">
+        <div class="insight-grid" style="margin-top:8px;">
+          <div class="insight-card">
+            <p class="insight-num">01</p>
+            <p class="insight-text"><strong>Iterate</strong> on the user feedback gathered during testing.</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-num">02</p>
+            <p class="insight-text"><strong>Dive deeper</strong> into how to keep users motivated throughout their budgeting journey.</p>
+          </div>
+          <div class="insight-card">
+            <p class="insight-num">03</p>
+            <p class="insight-text"><strong>Refine</strong> the overall visual design.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REFLECTION -->
+    <div class="cs-section reveal" id="reflection">
+      <div class="section-head">
+        <p class="section-eyebrow">Reflection</p>
+        <h2 class="section-title">What I carry <em>forward</em></h2>
+      </div>
+      <div class="section-body-inner">
+        <p class="cs-quote">"Design products that genuinely help people."</p>
+        <p class="cs-body">The reason I became a designer is to create products that genuinely help people. I'm incredibly grateful for the chance to build something creative and potentially meaningful to others. The process was wonderfully challenging — it required us to constantly think outside the box to answer what it truly means to design "a different budgeting app."</p>
+        <p class="cs-body">Lastly, I want to thank my incredible teammates. Without their collaboration and shared vision, penny wouldn't exist. This entire experience was filled with delightful, rewarding moments of growth.</p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- CS NAV FOOTER -->
+  <div class="cs-nav-footer reveal">
+    <a href="index.html#work" class="cs-nav-link">← All projects</a>
+    <a href="case-study-aquitania.html" class="cs-nav-link">Next project →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#ffffff; margin-top:0; border-top:1px solid #ececec;">
+    <div style="max-width:1280px; margin:0 auto; padding:60px 40px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px;">
+      <div style="display:flex; align-items:center; gap:0; margin-left:-20px;">
+        <div>
+          <p style="font-family:'Source Sans Pro',sans-serif; font-size:60px; font-weight:400; line-height:1.05; color:#81181D;">Let's start a</p>
+          <p style="font-family:'Source Sans Pro',sans-serif; font-size:60px; font-weight:400; font-style:italic; line-height:1.05; color:#81181D;">conversation.</p>
+        </div>
+        <img src="assets/oval-botanical.png" alt="" style="width:340px;height:auto;flex-shrink:0;pointer-events:none;margin-left:-60px;" />
+      </div>
+      <div style="text-align:right;">
+        <p style="font-family:'Source Sans Pro',sans-serif; font-style:italic; font-size:0.95rem; color:#726B65; margin-bottom:14px;">thank you for visiting.</p>
+        <div style="display:flex; gap:12px; justify-content:flex-end; margin-bottom:20px;">
+          <a href="mailto:yichen.janee@gmail.com" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #ccc;border-radius:50%;color:#666;text-decoration:none;" onmouseover="this.style.borderColor='#0f0f0f';this.style.color='#0f0f0f'" onmouseout="this.style.borderColor='#ccc';this.style.color='#666'">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/yi-chen-hsieh/" target="_blank" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #ccc;border-radius:50%;color:#666;text-decoration:none;" onmouseover="this.style.borderColor='#0f0f0f';this.style.color='#0f0f0f'" onmouseout="this.style.borderColor='#ccc';this.style.color='#666'">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+        <p style="font-family:'Inter',sans-serif; font-size:0.72rem; color:#726B65;">Based in New York, NY</p>
+        <p style="font-family:'Inter',sans-serif; font-size:0.7rem; color:#726B65; margin-top:6px;">© 2026 Jane H.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Agenda scroll-spy
+    const agendaLinks = [...document.querySelectorAll('.agenda-list a')];
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = '#' + e.target.id;
+          agendaLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        }
+      });
+    }, { rootMargin: '-28% 0px -60% 0px', threshold: 0 });
+    agendaLinks.forEach(a => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) spy.observe(t);
+    });
+  </script>
+</body>
+</html>
