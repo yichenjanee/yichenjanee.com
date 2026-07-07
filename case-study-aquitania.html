@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aquitania Design System — Case Study · Jane H.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@400;500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #0f0f0f; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.4s ease;
+    }
+    #navbar.scrolled { border-color: #ececec; }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 40px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400; letter-spacing: 0.02em;
+      color: #0f0f0f; text-decoration: none; white-space: nowrap;
+    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #8a8a8a; text-decoration: none;
+      transition: color 0.25s ease; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: #0f0f0f; transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: #0f0f0f; }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+    .container-wide { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── AGENDA SIDEBAR ── */
+    .cs-layout {
+      max-width: 1280px; margin: 40px auto 0; padding: 0 40px;
+      display: grid; grid-template-columns: 220px 1fr; gap: 72px; align-items: start;
+    }
+    .cs-agenda { position: sticky; top: 100px; align-self: start; }
+    .agenda-back {
+      display: inline-block; font-size: 0.95rem; color: #6b5a3e;
+      text-decoration: none; margin-bottom: 36px; transition: opacity 0.25s ease;
+    }
+    .agenda-back:hover { opacity: 0.55; }
+    .agenda-list { display: flex; flex-direction: column; gap: 15px; }
+    .agenda-list a {
+      font-size: 0.95rem; color: #cabd9f; text-decoration: none;
+      line-height: 1.3; transition: color 0.25s ease;
+    }
+    .agenda-list a:hover { color: #6b5a3e; }
+    .agenda-list a.active { color: #0f0f0f; }
+    .cs-section { scroll-margin-top: 100px; }
+
+    /* ── HERO ── */
+    .cs-hero {
+      max-width: 1280px; margin: 0 auto; padding: 130px 40px 60px;
+    }
+    .cs-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: #8a8a8a; text-decoration: none; margin-bottom: 64px;
+      transition: color 0.25s ease, gap 0.25s ease;
+    }
+    .cs-back:hover { color: #0f0f0f; gap: 12px; }
+    .cs-hero-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: end;
+    }
+    .cs-tag {
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #aaa; margin-bottom: 24px;
+    }
+    .cs-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 400;
+      line-height: 1.1; letter-spacing: -0.02em; color: #0f0f0f;
+      margin-bottom: 28px;
+    }
+    .cs-title em { font-style: italic; color: #6b5a3e; }
+    .cs-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem; font-weight: 300; color: #555; line-height: 1.8;
+    }
+
+    /* ── COVER ── */
+    .cs-cover {
+      width: 100%; aspect-ratio: 16/8; margin: 64px 0 0;
+      background: linear-gradient(135deg, #e9e3d6 0%, #d8cdb8 50%, #c9bca0 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .cs-cover-label {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.28);
+    }
+    .cs-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── FIGURES ── */
+    .cs-figure { margin-top: 44px; }
+    .cs-figure + .cs-body { margin-top: 32px; }
+    .built-figure { position: relative; }
+    .built-hotspot {
+      position: absolute; display: block; border-radius: 4px;
+      cursor: pointer; transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .built-hotspot:hover { background: rgba(15,15,15,0.06); box-shadow: 0 0 0 1px rgba(107,90,62,0.45); }
+    .cs-figure img { width: 100%; display: block; border: 1px solid #ececec; border-radius: 2px; background: #f6f4ef; }
+    .cs-figure.stack img + img { margin-top: 16px; }
+    .cs-caption { font-size: 0.72rem; font-weight: 300; color: #999; margin-top: 14px; line-height: 1.6; }
+
+    /* ── SECTION ── */
+    .cs-section { padding: 80px 0; }
+    .cs-section + .cs-section { border-top: 1px solid #f0f0f0; }
+
+    .section-head { margin-bottom: 28px; }
+    .section-num { display: none; }
+    .section-num {
+      font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic;
+      color: #bbb; padding-top: 8px;
+    }
+    .section-eyebrow {
+      font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #aaa; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 400; color: #0f0f0f; line-height: 1.18;
+    }
+    .section-title em { font-style: italic; color: #6b5a3e; }
+    .section-body-wrap { display: block; }
+    .section-body-inner { max-width: none; }
+
+    .cs-body {
+      font-size: 0.98rem; font-weight: 300; line-height: 1.9; color: #444; text-wrap: pretty; max-width: none;
+    }
+    .cs-body + .cs-body { margin-top: 1.3em; }
+    .cs-body strong { font-weight: 500; color: #0f0f0f; }
+
+    /* ── CALLOUT / SUBHEAD / QUOTE ── */
+    .cs-callout {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 1.9rem; line-height: 1.45; color: #6b5a3e;
+      max-width: 900px; margin: 0 0 8px;
+    }
+    .cs-subhead {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 400;
+      color: #0f0f0f; margin: 52px 0 0;
+    }
+    .cs-quote {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 2.4rem; line-height: 1.4; color: #0f0f0f;
+      max-width: 900px; margin: 0 0 28px; letter-spacing: -0.01em;
+    }
+    .cs-quote-author {
+      display: block; font-family: 'Inter', sans-serif; font-style: normal;
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #8a8a8a; margin-top: 18px;
+    }
+    .token-list { list-style: none; margin: 24px 0 0; display: flex; flex-direction: column; gap: 12px; }
+    .token-list li { font-size: 0.95rem; font-weight: 300; color: #444; padding-left: 22px; position: relative; line-height: 1.6; }
+    .token-list li strong { font-weight: 500; color: #0f0f0f; }
+    .token-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; background: #c9bca0; border-radius: 50%; }
+
+    /* ── OVERVIEW / META GRID ── */
+    .overview-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      margin-top: 8px; background: #ececec; border: 1px solid #ececec;
+    }
+    .overview-card { padding: 28px 24px; background: #fff; }
+    .oc-label {
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #aaa; margin-bottom: 10px;
+    }
+    .oc-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 400; color: #0f0f0f; line-height: 1.45;
+    }
+
+    /* ── INSIGHTS ── */
+    .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 8px; background: #ececec; border: 1px solid #ececec; }
+    .insight-card { padding: 32px 28px; background: #fff; }
+    .insight-num {
+      font-family: 'Playfair Display', serif; font-size: 1.6rem;
+      font-weight: 400; font-style: italic; color: #d8cdb8; margin-bottom: 14px;
+    }
+    .insight-text { font-size: 0.9rem; font-weight: 300; line-height: 1.75; color: #444; }
+    .insight-text strong { font-weight: 500; color: #0f0f0f; }
+
+    /* ── CS NAV FOOTER ── */
+    .cs-nav-footer {
+      max-width: 1280px; margin: 0 auto; padding: 48px 40px;
+      border-top: 1px solid #f0f0f0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cs-nav-link {
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: #8a8a8a; text-decoration: none; transition: color 0.25s ease;
+    }
+    .cs-nav-link:hover { color: #0f0f0f; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── HAMBURGER ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: #0f0f0f; }
+
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .cs-hero { padding: 100px 24px 40px; }
+      .cs-hero-grid { grid-template-columns: 1fr; gap: 32px; align-items: start; }
+      .container, .container-wide { padding: 0 24px; }
+      .cs-layout { grid-template-columns: 1fr; gap: 0; padding: 0 24px; }
+      .cs-agenda { display: none; }
+      .section-head, .section-body-wrap { grid-template-columns: 1fr; gap: 16px; }
+      .section-num { padding-top: 0; }
+      .overview-grid { grid-template-columns: 1fr 1fr; }
+      .insight-grid { grid-template-columns: 1fr; }
+      .cs-callout { font-size: 1.25rem; }
+      .cs-quote { font-size: 1.5rem; }
+    }
+  </style>
+<link id="gfont-Inter" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" style="font-family: Nunito; font-size: 20px;"><img src="assets/star-logo.png" alt="" style="width:36px;height:36px;object-fit:contain;flex-shrink:0;">jane hsieh</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-grid">
+      <div>
+        <p class="cs-tag">DESIGN SYSTEM · UX/UI DESIGN · 2026</p>
+        <h1 class="cs-title" style="font-size: 40px; font-family: &quot;Source Sans Pro&quot;">Building the Aquitania Design System: Translating Luxury Heritage into a Digital Experience</h1>
+      </div>
+      <p class="cs-tagline">Cunard is a luxury cruise line with a legacy spanning over 180 years, offering high-end vacations that honor the grand traditions of the early 20th century.</p>
+    </div>
+  </div>
+
+  <div class="container-wide">
+    <div class="cs-cover reveal">
+      <img src="assets/aq/cover.png" alt="Aquitania Design System — cover" />
+    </div>
+  </div>
+
+  <div class="cs-layout">
+    <aside class="cs-agenda">
+      <a href="index.html#work" class="agenda-back">← back to work</a>
+      <nav class="agenda-list">
+        <a href="#problem">problem</a>
+        <a href="#challenge">problem statement</a>
+        <a href="#solution">solution</a>
+        <a href="#principles">design principles</a>
+        <a href="#deconstruct">deconstructing the system</a>
+        <a href="#tokens">design tokens</a>
+        <a href="#uikit">ui kit</a>
+        <a href="#testing">user testing</a>
+        <a href="#handbook">the living handbook</a>
+        <a href="#outcome">outcome</a>
+        <a href="#reflection">reflections</a>
+      </nav>
+    </aside>
+    <div class="cs-content">
+
+    <!-- META -->
+    <div class="cs-section reveal" style="padding-bottom:40px;">
+      <div class="overview-grid">
+        <div class="overview-card">
+          <p class="oc-label">Duration</p>
+          <p class="oc-value" style="font-family: Inter; font-size: 14px">February – May 2026 (4 months)</p>
+        </div>
+        <div class="overview-card">
+          <p class="oc-label">Team</p>
+          <p class="oc-value" style="font-family: Inter; font-size: 14px">4 Product Designers</p>
+        </div>
+        <div class="overview-card">
+          <p class="oc-label">Skills Used</p>
+          <p class="oc-value" style="font-family: Inter; font-size: 14px">UI Design, Design System, Usability Testing, Documentation</p>
+        </div>
+        <div class="overview-card">
+          <p class="oc-label">Tools Used</p>
+          <p class="oc-value" style="font-family: Inter; font-size: 14px">Figma, Zeroheight</p>
+        </div>
+      </div>
+      <p class="cs-body" style="margin-top:20px; font-size:0.82rem; color:#888;">
+</p>
+    </div>
+
+    <!-- 01 PROBLEM -->
+    <div class="cs-section reveal" id="problem">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <div>
+          <p class="section-eyebrow">Problem</p>
+          <h2 class="section-title" style="font-family: &quot;Source Sans Pro&quot;; font-size: 32px">A digital experience that <em>doesn't match the journey</em></h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <div class="cs-figure" style="margin-top:0;">
+            <img src="assets/aq/img_p1_1.png" alt="A Cunard ocean liner arriving in New York harbor" />
+          </div>
+          <p class="cs-body" style="margin-top:44px;">While Cunard excels at providing passengers with extraordinary experiences to discover the world, its digital experiences fails to reflect that same level of refinement for its customers. Cunard excels at providing passengers with extraordinary experiences to discover the world, but its digital experience fails to reflect that same level of refinement. Users can easily tell it is a travel website; it provides the necessary features to plan a vacation, and the overall functionality works as expected. However, the interface shows inconsistencies that affect the user experience: </p>
+          <div class="cs-figure">
+            <img src="assets/aq/img_p1_2.png" alt="The site has inconsistent typography, interactive states, and overcrowded layouts" />
+          </div>
+          <p class="cs-body" style="margin-top:32px;">By aligning the digital experience with Cunard's "premium" heritage, we want to evoke the physical and emotional feeling of traveling back in time.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 DESIGN CHALLENGE -->
+    <div class="cs-section reveal" id="challenge">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <div>
+          <p class="section-eyebrow">Problem Statement</p>
+          <h2 class="section-title" style="font-family: &quot;Source Sans Pro&quot;; font-size: 32px">Closing the gap between <em>ordinary &amp; extraordinary</em></h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <p class="cs-callout" style="font-size: 20px; font-family: Inter">How might we redefine Cunard's design system to close the gap between its ordinary digital presence and its extraordinary physical journeys?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 SOLUTION -->
+    <div class="cs-section reveal" id="solution">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <div>
+          <p class="section-eyebrow">Solution</p>
+          <h2 class="section-title" style="font-size: 32px; font-family: &quot;Source Sans Pro&quot;">Introducing the <span style="color:#6b5a3e">Aquitania Design System</span>: A clean &amp; cohesive, accessible, and consistent design that refine luxury and premium</h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <p class="cs-body">The Aquitania Design System is named after the <em>RMS Aquitania</em>, a legendary Cunard ship operated from 1914 to 1950. Affectionately nicknamed "The Ship Beautiful," she was historically unique for serving in both World Wars. In honoring her legacy, our design system aims to ship a similarly beautiful, refined digital experience for Cunard's customers.</p>
+          <p class="cs-body">We created the Aquitania Design System alongside a comprehensive UI kit and a supporting documentation site to unify, elevate, and standardize Cunard's online experience.</p>
+          <p class="cs-subhead" style="font-family: &quot;Source Sans Pro&quot;; font-size: 24px">What we built</p>
+          <div class="cs-figure built-figure">
+            <img src="assets/aq/what-we-built.png" alt="The Aquitania UI Kit in Figma and the supporting documentation site in Zeroheight" />
+            <a class="built-hotspot" href="https://www.figma.com/community/file/1625909499603168655" target="_blank" rel="noopener" aria-label="View Aquitania UI Kit on Figma" style="left:6.8%; top:77.6%; width:20%; height:9.8%;"></a>
+            <a class="built-hotspot" href="https://zeroheight.com/7069a3a57" target="_blank" rel="noopener" aria-label="View Aquitania Design System on Zeroheight" style="left:54.4%; top:77.6%; width:20%; height:9.8%;"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 WHAT SHAPES AQUITANIA -->
+    <div class="cs-section reveal" id="principles">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <div>
+          <p class="section-eyebrow">Design Principles</p>
+          <h2 class="section-title" style="font-family: &quot;Source Sans Pro&quot;; font-size: 32px">What shapes <em>Aquitania?</em></h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <p class="cs-body">Aquitania was designed based on four core design principles to resolve existing issues and create a refined, unified design system for our users. By establishing these principles, we developed targeted solutions across the digital experience:</p>
+          <div class="cs-figure">
+            <img src="assets/aq/img_p3_2.png" alt="The four design principles: Accessible, Consistent, Luxurious, and Discoverable" />
+          </div>
+          <p class="cs-subhead" style="font-family: &quot;Source Sans Pro&quot;; font-size: 24px">What it looks like with Aquitania?</p>
+          <div class="cs-figure">
+            <img src="assets/aq/img_p4_1.png" alt="Before and after — the Cunard homepage and survey redesign" />
+          </div>
+          <p class="cs-body" style="margin-top:32px;">By creating a comprehensive UI Kit and clear system documentation, we successfully transitioned Cunard's digital presence away from clunky, transactional layouts toward an editorial, high-end experience.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 DECONSTRUCTING THE SYSTEM -->
+    <div class="cs-section reveal" id="deconstruct">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <div>
+          <p class="section-eyebrow">Deconstructing the System</p>
+          <h2 class="section-title" style="font-family: &quot;Source Sans Pro&quot;; font-size: 32px">Auditing the existing interface to find <em>hidden opportunities</em></h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <p class="cs-body">Before upgrading the platform to a premium status, we had to sort through the existing ecosystem. We captured screenshots across all pages to perform a comprehensive UI audit, examining every element from the smallest arrow to the largest button. Through this process, we identified critical inconsistencies and accessibility issues, which we viewed as direct opportunities for improvement.</p>
+          <div class="cs-figure">
+            <img src="assets/aq/img_p5_1.png" alt="Screenshots captured across all pages, grouped into nine categories" />
+          </div>
+          <p class="cs-body">We grouped these elements into 9 categories: color, typography, images, media, buttons, form elements, navigation, blocks, and sections. Through this process, we analyzed these components and identified several key inconsistencies:</p>
+          <div class="cs-figure">
+            <img src="assets/aq/img_p5_2.png" alt="Key inconsistencies: color variance, component redundancy, and accessibility issues" />
+          </div>
+          <p class="cs-body">With these gaps clearly defined, we moved forward with the confidence needed to resolve Cunard's foundational issues.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 DESIGN TOKENS -->
+    <div class="cs-section reveal" id="tokens">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <div>
+          <p class="section-eyebrow">Design Tokens</p>
+          <h2 class="section-title" style="font-family: &quot;Source Sans Pro&quot;; font-size: 32px">Building a solid foundation with a three-tier token structure</h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <p class="cs-body">A great design system requires a solid foundation. We began by establishing our design tokens: color, typography, and spacing. By defining these early on, we ensured that designers could easily make global updates and developers would have a clear, shared language to build from.</p>
+          <p class="cs-body">Our tokens follow a three-tier pyramid structure:</p>
+          <ul class="token-list">
+            <li><strong>Primitive Tokens:</strong> the base level.</li>
+            <li><strong>Semantic Tokens:</strong> the middle level.</li>
+            <li><strong>Component Tokens:</strong> the top level.</li>
+          </ul>
+          <p class="cs-body" style="margin-top:20px;">This structure streamlines design communication. Once established, these tokens became the definitive building blocks for our system.</p>
+          <div class="cs-figure">
+            <img src="assets/aq/img_p6_1.png" alt="Design tokens for color, typography, and spacing" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 UI KIT -->
+    <div class="cs-section reveal" id="uikit">
+      <div class="section-head">
+        <span class="section-num">07</span>
+        <div>
+          <p class="section-eyebrow">UI Kit</p>
+          <h2 class="section-title" style="font-family: &quot;Source Sans Pro&quot;; font-size: 32px">Translating brand aesthetics into <em>flexible, scalable components</em></h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <p class="cs-body">We started by creating our Foundations Library, which defined our core colors, icons, borders, Z-index, and layout grids.</p>
+          <div class="cs-figure">
+            <img src="assets/aq/img_p7_1.png" alt="Foundations Library: colors, icons, borders, Z-index, and layout grids" />
+          </div>
+          <p class="cs-body">Once the foundations were set, our team brainstormed the visual direction of the website. Through competitive analysis and mood boards, we reimagined the website's aesthetics to define the visual language of our components.</p>
+          <p class="cs-body">After aligning on the creative direction, we built a comprehensive Component Library derived from our foundations. We transformed these into flexible, reusable elements for the design process, including: buttons, images, Navigation Bars &amp; Tabs, Inputs, Accordion, Cards, Sections, and Carousels.</p>
+          <div class="cs-figure">
+            <img src="assets/aq/img_p7_2.png" alt="Component Library: buttons, navigation, inputs, accordions, cards, sections, and carousels" />
+          </div>
+          <p class="cs-body">With that, the result was a clean and cohesive UI kit rooted in intentional design decisions and clear principles.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 USER TESTING -->
+    <div class="cs-section reveal" id="testing">
+      <div class="section-head">
+        <span class="section-num">08</span>
+        <div>
+          <p class="section-eyebrow">User Testing</p>
+          <h2 class="section-title" style="font-family: &quot;Source Sans Pro&quot;; font-size: 32px">Validating functionality <em>with designers</em></h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <p class="cs-body">We conducted four in-person user tests, asking designers to recreate the homepage using our newly built UI kit. We utilized the "think-aloud" method to understand their cognitive process during the redesign. There are key insights and feedback on both positive and area to improve:</p>
+          <div class="insight-grid" style="margin-top:32px;">
+            <div class="insight-card">
+              <p class="insight-num">+</p>
+              <p class="insight-text"><strong>Positive.</strong> All users successfully recreated the redesigned homepage using the kit.</p>
+            </div>
+            <div class="insight-card">
+              <p class="insight-num">!</p>
+              <p class="insight-text"><strong>Area to Improve.</strong> Users felt overwhelmed by the sheer volume of information included in the UI kit, noting that it felt overly complex. They suggested adding clear guidelines and instructions to improve usability.</p>
+            </div>
+          </div>
+          <p class="cs-body" style="margin-top:24px;">This feedback highlighted a crucial lesson: a UI kit is only as good as the guidance that accompanies it.</p>
+          <div class="cs-figure">
+            <img src="assets/aq/user-testing.jpg" alt="In-person user testing — designers recreating the homepage using the UI kit" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 THE LIVING HANDBOOK -->
+    <div class="cs-section reveal" id="handbook">
+      <div class="section-head">
+        <span class="section-num">09</span>
+        <div>
+          <p class="section-eyebrow">The Living Handbook</p>
+          <h2 class="section-title" style="font-family: &quot;Source Sans Pro&quot;; font-size: 32px">Providing a handbook with clear rules and guidance to ensure <em>best practices</em></h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <p class="cs-body">With the completed UI kits and valuable feedback, we came to understand the importance of providing a guideline for our users.</p>
+          <p class="cs-body">A design system is more than just a collection of UI components. Documentation provides the necessary context, accessibility guidelines, and best practices required to use the system correctly. We chose Zeroheight as our documentation platform for its straightforward, purpose-built approach to managing design systems.</p>
+          <div class="cs-figure">
+            <img src="assets/aq/img_p10_1.png" alt="The Aquitania Design System documentation, built in Zeroheight" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 OUTCOME -->
+    <div class="cs-section reveal" id="outcome">
+      <div class="section-head">
+        <span class="section-num">10</span>
+        <div>
+          <p class="section-eyebrow">Outcome</p>
+          <h2 class="section-title" style="font-size: 32px; font-family: &quot;Source Sans Pro&quot;">Pitching the value of a <em>unified system</em></h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <p class="cs-body">We pitched the Aquitania Design System to our stakeholders, communicating not just what we built, but why a design system is a critical business asset. We demonstrated how Aquitania strengthens Cunard's brand identity, improves long-term development efficiency, and preserves design value over time.</p>
+          <div class="cs-figure">
+            <img src="assets/aq/img_p11_1.png" alt="The team presenting the Aquitania Design System to stakeholders" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 KEY LESSONS -->
+    <div class="cs-section reveal" id="reflection">
+      <div class="section-head">
+        <span class="section-num">11</span>
+        <div>
+          <p class="section-eyebrow">Key Lessons &amp; Reflections</p>
+          <h2 class="section-title" style="font-size: 32px; font-family: &quot;Source Sans Pro&quot;">What I carry <em>forward</em></h2>
+        </div>
+      </div>
+      <div class="section-body-wrap">
+        <span></span>
+        <div class="section-body-inner">
+          <p class="cs-quote" style="font-family: Inter; font-size: 20px">"Design systems are cultural changes disguised as UI Kits." 
+ — LAUREN LOPRETE</p>
+          <p class="cs-body">Looking back, this quote deeply resonates with my experience. Building a design system is never just about the UI components; it is a long-term, evolving commitment to collaboration and quality. This project gave me a profound appreciation for taking a product from 0 to 1. Every step came with a steep learning curve, requiring meticulous consideration for the end user — the lessons I will carry with me into my future practice.</p>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- CS NAV FOOTER -->
+  <div class="cs-nav-footer reveal">
+    <a href="index.html#work" class="cs-nav-link">← All projects</a>
+    <a href="case-study-aura.html" class="cs-nav-link">Next project →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#ffffff; margin-top:0; border-top:1px solid #ececec;">
+    <div style="max-width:1280px; margin:0 auto; padding:30px 40px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px;">
+      <div style="display:flex; align-items:center; gap:0; margin-left:0;">
+        <div>
+          <p style="font-family:'Source Sans Pro',sans-serif; font-size: 60px; font-weight: 400; line-height:1.05; color:#81181D;">Let's start a</p>
+          <p style="font-family:'Source Sans Pro',sans-serif; font-size: 60px; font-weight: 400; font-style:italic; line-height:1.05; color:#81181D;">conversation.</p>
+        </div>
+        <img src="assets/oval-botanical.png" alt="" style="width:340px;height:auto;flex-shrink:0;pointer-events:none;margin-left:-60px;margin-top:40px;" />
+      </div>
+      <div style="text-align:right;">
+        <p style="font-family:'Source Sans Pro',sans-serif; font-style:italic; font-size:0.95rem; color:#726B65; margin-bottom:14px;">thank you for visiting.</p>
+        <div style="display:flex; gap:12px; justify-content:flex-end; margin-bottom:20px;">
+          <a href="mailto:yichen.janee@gmail.com" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #ccc;border-radius:50%;color:#666;text-decoration:none;" onmouseover="this.style.borderColor='#0f0f0f';this.style.color='#0f0f0f'" onmouseout="this.style.borderColor='#ccc';this.style.color='#666'">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/yi-chen-hsieh/" target="_blank" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #ccc;border-radius:50%;color:#666;text-decoration:none;" onmouseover="this.style.borderColor='#0f0f0f';this.style.color='#0f0f0f'" onmouseout="this.style.borderColor='#ccc';this.style.color='#666'">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+        <p style="font-family:'Inter',sans-serif; font-size:0.72rem; color:#726B65;">Based in New York, NY</p>
+        <p style="font-family:'Inter',sans-serif; font-size:0.7rem; color:#726B65; margin-top:6px;">© 2025 Jane H.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Agenda scroll-spy
+    const agendaLinks = [...document.querySelectorAll('.agenda-list a')];
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = '#' + e.target.id;
+          agendaLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        }
+      });
+    }, { rootMargin: '-28% 0px -60% 0px', threshold: 0 });
+    agendaLinks.forEach(a => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) spy.observe(t);
+    });
+  </script>
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+:is(h1,h2,h3,h4,h5,h6) >span { font-family: "Source Sans Pro" !important }
+:is(h1,h2,h3,h4,h5,h6) >span { font-size: 6px !important }
+:is(h1,h2,h3,h4,h5,h6) >span { font-size: 32px !important }
+:is(h1,h2,h3,h4,h5,h6) >span { font-size: 20px !important }
+:is(h1,h2,h3,h4,h5,h6) >span { font-size: 32px !important }
+</style>
