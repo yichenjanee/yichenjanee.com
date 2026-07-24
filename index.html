@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="assets/favicon-flower.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jane H. — Product Designer</title>
@@ -256,6 +257,11 @@
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .hero-flower { display: none; }
+      .site-footer-row { flex-direction: column; align-items: flex-start !important; gap: 24px !important; padding: 40px 24px !important; }
+      .site-footer-cta { flex-direction: column; align-items: flex-start !important; }
+      .site-footer-cta > a p { font-size: 40px !important; }
+      .site-footer-oval { width: 180px !important; margin-left: 0 !important; margin-top: 12px !important; }
       .hero { padding: 0 24px 60px; }
       .hero-sub { flex-direction: column; gap: 36px; }
       .hero-stats { gap: 32px; }
@@ -299,7 +305,7 @@
       <h1 class="hero-headline" id="hero-headline">
         <span style="color:#8EABCD;">I'm jane, a</span> <em style="color: #81181D;">product/UX designer</em> <span style="color:#8EABCD;">who crafts seamless digital experiences through strategy, empathy, and design.</span> <img src="assets/cherry.png?v=2" alt="" style="display:inline-block;width:0.95em;height:auto;vertical-align:-0.12em;margin-left:0.1em;" />
       </h1>
-      <img src="assets/flower-vase.png" alt="" style="position:absolute;right:140px;top:140px;width:240px;height:auto;pointer-events:none;opacity:0.95;" />
+      <img class="hero-flower" src="assets/flower-vase.png" alt="" style="position:absolute;right:140px;top:140px;width:240px;height:auto;pointer-events:none;opacity:0.95;" />
       <div class="hero-sub" id="hero-sub">
         <p class="hero-desc" style="font-family: &quot;Source Sans Pro&quot;; color:#726B65">
           Currently building scalable products driven by deep user research and strategic design thinking. ⋆˙⟡🫧
@@ -409,13 +415,13 @@
 
   <!-- FOOTER -->
   <div style="background:#FFFDF8; margin-top:24px; border-top:1px solid #e8e8e5;">
-    <div style="max-width:1280px; margin:0 auto; padding:30px 40px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px;">
-      <div style="display:flex; align-items:center; gap:0; margin-left:0;">
-        <div>
+    <div class="site-footer-row" style="max-width:1280px; margin:0 auto; padding:30px 40px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px;">
+      <div class="site-footer-cta" style="display:flex; align-items:center; gap:0;">
+        <a href="mailto:yichen.janee@gmail.com" style="text-decoration:none;">
           <p style="font-family: &quot;Source Sans Pro&quot;; font-size: 60px; font-weight: 400; line-height: 1.05; color: #81181D">Let's start a</p>
           <p style="font-family: &quot;Source Sans Pro&quot;; font-size: 60px; font-weight: 400; font-style: italic; line-height: 1.05; color: #81181D">conversation.</p>
-        </div>
-        <img src="assets/oval-botanical.png" alt="" style="width:340px;height:auto;flex-shrink:0;pointer-events:none;margin-left:-60px;margin-top:40px;" />
+        </a>
+        <img class="site-footer-oval" src="assets/oval-botanical.png" alt="" style="width:340px;height:auto;flex-shrink:0;pointer-events:none;margin-left:-60px;margin-top:40px;" />
       </div>
       <div style="text-align:right;">
         <p style="font-family: &quot;Source Sans Pro&quot;; font-style: italic; font-size: 0.95rem; color: #726B65; margin-bottom: 14px">thank you for visiting.</p>
@@ -428,7 +434,7 @@
           </a>
         </div>
         <p style="font-family:'Inter',sans-serif; font-size:0.72rem; color:#726B65;">Based in New York, NY</p>
-        <p style="font-family:'Inter',sans-serif; font-size:0.7rem; color:#726B65; margin-top:6px;">© 2025 Jane H.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:0.7rem; color:#726B65; margin-top:6px;">© 2026 Jane H.</p>
       </div>
     </div>
   </div>

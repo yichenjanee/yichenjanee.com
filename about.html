@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="assets/favicon-flower.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About — Jane H.</title>
@@ -237,6 +238,11 @@
     }
     .love-item { position: absolute; cursor: default; }
     .love-item:hover { z-index: 20; }
+    .love-hotspot{position:absolute;cursor:pointer;z-index:5;border-radius:14px;transition:transform .35s ease}
+    .love-hotspot:hover{transform:scale(1.06);z-index:25}
+    .love-tip{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translate(-50%,6px);background:#2b241c;color:#FFFDF8;font-family:'Source Sans Pro',sans-serif;font-size:13px;line-height:1.35;padding:8px 12px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+    .love-hotspot:hover .love-tip{opacity:1;transform:translate(-50%,0)}
+    .love-tip:after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#2b241c}
     .love-img {
       display: block;
       object-fit: cover;
@@ -315,6 +321,11 @@
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .site-footer-row { flex-direction: column; align-items: flex-start !important; gap: 24px !important; padding: 40px 24px !important; }
+      .site-footer-cta { flex-direction: column; align-items: flex-start !important; }
+      .site-footer-cta > a p { font-size: 40px !important; }
+      .site-footer-oval { width: 180px !important; margin-left: 0 !important; margin-top: 12px !important; }
+      .loves-grid img { width: 100% !important; height: auto !important; }
       .hero-grid { grid-template-columns: 1fr; padding: 100px 24px 40px; gap: 36px; }
       .hero-photo { order: -1; }
       .timeline-section { grid-template-columns: 1fr; padding: 30px 24px 60px; gap: 48px; }
@@ -431,20 +442,31 @@
     <p class="loves-hint" style="padding-left:80px">
 </p>
 
-    <div class="loves-grid" id="loves-grid">
+    <div class="loves-grid" id="loves-grid" style="position:relative">
       <img src="assets/loves-collage.png?v=8" alt="Beyond design — traveling the world, decorating my home, cooking healthy meals, making latte art, working out, reading books, taking photos, arranging flowers, baking cheesecakes, dressing up" style="display:block; width:100%; max-width:1440px; height:auto; margin:0 auto;" />
+      <div class="love-hotspot" style="left:11.3%;top:7.5%;width:12.9%;height:23%" tabindex="0"><span class="love-tip">traveling the world</span></div>
+      <div class="love-hotspot" style="left:32.4%;top:11%;width:12.6%;height:21.3%" tabindex="0"><span class="love-tip">decorating my home</span></div>
+      <div class="love-hotspot" style="left:55.3%;top:19%;width:11.3%;height:23%" tabindex="0"><span class="love-tip">cooking healthy meals</span></div>
+      <div class="love-hotspot" style="left:77%;top:7.5%;width:9.7%;height:19.6%" tabindex="0"><span class="love-tip">making latte art</span></div>
+      <div class="love-hotspot" style="left:16%;top:40.4%;width:11.6%;height:19.6%" tabindex="0"><span class="love-tip">working out</span></div>
+      <div class="love-hotspot" style="left:72.9%;top:38.1%;width:10.4%;height:14.4%" tabindex="0"><span class="love-tip">taking photos</span></div>
+      <div class="love-hotspot" style="left:11.6%;top:64%;width:14.5%;height:26%" tabindex="0"><span class="love-tip">arranging flowers</span></div>
+      <div class="love-hotspot" style="left:34.9%;top:54.8%;width:9.7%;height:20.2%" tabindex="0"><span class="love-tip">reading books</span></div>
+      <div class="love-hotspot" style="left:57.5%;top:53.1%;width:11.6%;height:19%" tabindex="0"><span class="love-tip">baking cheesecakes</span></div>
+      <div class="love-hotspot" style="left:78.6%;top:61.7%;width:8.8%;height:17.3%" tabindex="0"><span class="love-tip">dressing up</span></div>
+    </div>
     </div>
   </div>
 
   <!-- FOOTER -->
   <div style="background:#FFFDF8; margin-top:24px; border-top:1px solid #e8e8e5;">
-    <div style="max-width:1280px; margin:0 auto; padding:30px 40px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px;">
-      <div style="display:flex; align-items:center; gap:0; margin-left:0;">
-        <div>
+    <div class="site-footer-row" style="max-width:1280px; margin:0 auto; padding:30px 40px 40px; display:flex; align-items:center; justify-content:space-between; gap:40px;">
+      <div class="site-footer-cta" style="display:flex; align-items:center; gap:0;">
+        <a href="mailto:yichen.janee@gmail.com" style="text-decoration:none;">
           <p style="font-family: &#39;Source Sans Pro&#39;,sans-serif; font-size: 60px; font-weight: 400; line-height: 1.05; color: #81181D">Let's start a</p>
           <p style="font-family: &#39;Source Sans Pro&#39;,sans-serif; font-size: 60px; font-weight: 400; font-style: italic; line-height: 1.05; color: #81181D">conversation.</p>
-        </div>
-        <img src="assets/oval-botanical.png" alt="" style="width:340px;height:auto;flex-shrink:0;pointer-events:none;margin-left:-60px;margin-top:40px;" />
+        </a>
+        <img class="site-footer-oval" src="assets/oval-botanical.png" alt="" style="width:340px;height:auto;flex-shrink:0;pointer-events:none;margin-left:-60px;margin-top:40px;" />
       </div>
       <div style="text-align:right;">
         <p style="font-family:'Source Sans Pro',sans-serif; font-style:italic; font-size:0.95rem; color:#726B65; margin-bottom:14px;">thank you for visiting.</p>
@@ -457,7 +479,7 @@
           </a>
         </div>
         <p style="font-family:'Inter',sans-serif; font-size:0.72rem; color:#726B65;">Based in New York, NY</p>
-        <p style="font-family:'Inter',sans-serif; font-size:0.7rem; color:#726B65; margin-top:6px;">© 2025 Jane H.</p>
+        <p style="font-family:'Inter',sans-serif; font-size:0.7rem; color:#726B65; margin-top:6px;">© 2026 Jane H.</p>
       </div>
     </div>
   </div>
